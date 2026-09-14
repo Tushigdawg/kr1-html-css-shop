@@ -25,3 +25,4 @@
 
 ФИО: Эрхэмбилэг Тушиг  
 Группа: ЭФБО 07-25
+GitHub Pages: https://Tushigdawg.github.io/kr1-html-css-shop/
