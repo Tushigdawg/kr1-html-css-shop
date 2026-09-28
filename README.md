@@ -16,9 +16,9 @@ TechStore — многостраничный HTML/CSS-сайт интернет-
 
 ## Ссылка на опубликованный проект
 
-GitHub Pages: https://username.github.io/kr1-html-css-shop/
+GitHub Pages: https://tushigdawg.github.io/kr1-html-css-shop/
 
-Репозиторий: https://github.com/username/kr1-html-css-shop
+Репозиторий: https://github.com/Tushigdawg/kr1-html-css-shop.git
 
 ## Структура проекта
 
