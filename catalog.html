@@ -6,8 +6,10 @@
   <meta name="description" content="Каталог товаров учебного интернет-магазина.">
   <title>Каталог товаров — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -18,7 +20,13 @@
             <a class="site-nav__link" href="index.html">Главная</a>
           </li>
           <li class="site-nav__item">
-            <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
+            <a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="category.html">Категория</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Карточка товара</a>
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link" href="contacts.html">Контакты</a>
@@ -37,7 +45,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
       <span class="breadcrumbs__current">Каталог</span>
@@ -46,9 +54,8 @@
     <section class="section">
       <h1 class="section__title">Каталог товаров</h1>
       <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        Выберите категорию, цену и статус товара или отсортируйте список.
+        Карточки выделены по типу: хит, новинка, скидка, нет в наличии.
       </p>
     </section>
 
@@ -56,65 +63,181 @@
       <aside class="catalog-filters">
         <h2 class="catalog-filters__title">Фильтры</h2>
 
-        <form class="filters-form" action="#" method="get">
+        <form class="filters-form" id="filters-form" action="#" method="get">
           <fieldset class="filters-form__fieldset">
             <legend class="filters-form__legend">Категория</legend>
-
-            <label class="filters-form__label">
-              <input type="checkbox" name="category" value="all">
-              Все товары
-            </label>
-
-            <label class="filters-form__label">
-              <input type="checkbox" name="category" value="popular">
-              Популярные
-            </label>
-
-            <label class="filters-form__label">
-              <input type="checkbox" name="category" value="new">
-              Новинки
-            </label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="gadgets"> Гаджеты</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="accessories"> Аксессуары</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="home"> Для дома</label>
           </fieldset>
 
           <fieldset class="filters-form__fieldset">
-            <legend class="filters-form__legend">Цена</legend>
+            <legend class="filters-form__legend">Статус</legend>
+            <label class="filters-form__label"><input type="checkbox" name="status" value="new"> Новинки</label>
+            <label class="filters-form__label"><input type="checkbox" name="status" value="discount"> Со скидкой</label>
+            <label class="filters-form__label"><input type="checkbox" name="status" value="in-stock"> Только в наличии</label>
+          </fieldset>
 
+          <fieldset class="filters-form__fieldset">
+            <legend class="filters-form__legend">Цена, руб.</legend>
             <label class="filters-form__label" for="price-from">От</label>
             <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
-
             <label class="filters-form__label" for="price-to">До</label>
             <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
 
           <button class="button button--primary" type="submit">Применить</button>
+          <button class="button button--ghost" type="reset">Сбросить</button>
         </form>
       </aside>
 
       <section class="catalog-products">
         <h2 class="catalog-products__title">Список товаров</h2>
 
-        <div class="products-grid">
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
-            <a class="button button--secondary" href="index.html#popular">Подробнее</a>
-          </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
-            <a class="button button--secondary" href="index.html#popular">Подробнее</a>
-          </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
-            <a class="button button--secondary" href="index.html#popular">Подробнее</a>
-          </article>
+        <div class="catalog-toolbar">
+          <p class="catalog-toolbar__count" id="results-count" role="status">Найдено: 9 товаров</p>
+          <div class="catalog-toolbar__sort">
+            <label for="sort-select">Сортировка:</label>
+            <select class="catalog-toolbar__select" id="sort-select">
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Сначала дешёвые</option>
+              <option value="price-desc">Сначала дорогие</option>
+              <option value="name">По названию</option>
+            </select>
+          </div>
         </div>
+
+        <div class="products-grid" data-sortable>
+        <article class="product-card" data-name="Товар 1" data-price="1000" data-category="gadgets" data-tags="in-stock" data-order="1">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-1.svg" alt=""></div>
+          
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=1">Товар 1</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Гаджеты.</p>
+            <p class="product-card__price">Цена: 1000 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=1">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--featured" data-name="Товар 2" data-price="1500" data-category="gadgets" data-tags="hit in-stock" data-order="2">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-2.svg" alt=""></div>
+          <span class="badge product-card__badge">Хит</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=2">Товар 2</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Гаджеты.</p>
+            <p class="product-card__price">Цена: 1500 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=2">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--discount" data-name="Товар 3" data-price="2000" data-category="accessories" data-tags="discount in-stock" data-order="3">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-3.svg" alt=""></div>
+          <span class="badge badge--discount product-card__badge">&minus;20%</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=3">Товар 3</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Аксессуары.</p>
+            <p class="product-card__price">Цена: <span class="visually-hidden">старая </span><s class="product-card__price-old">2500 руб.</s> <span class="visually-hidden">новая </span>2000 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=3">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--new" data-name="Товар 4" data-price="1200" data-category="home" data-tags="new in-stock" data-order="4">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-4.svg" alt=""></div>
+          <span class="badge badge--new product-card__badge">Новинка</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=4">Товар 4</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Для дома.</p>
+            <p class="product-card__price">Цена: 1200 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=4">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card" data-name="Товар 5" data-price="800" data-category="accessories" data-tags="in-stock" data-order="5">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-5.svg" alt=""></div>
+          
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=5">Товар 5</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Аксессуары.</p>
+            <p class="product-card__price">Цена: 800 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=5">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--unavailable" data-name="Товар 6" data-price="3200" data-category="gadgets" data-tags="out" data-order="6">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-6.svg" alt=""></div>
+          
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=6">Товар 6</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Гаджеты.</p>
+            <p class="product-card__price">Цена: 3200 руб.</p>
+            <p class="stock stock--out">Нет в наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=6">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          <button class="button button--primary" type="button" disabled>Заказать</button>
+          </div>
+        </article>
+        <article class="product-card product-card--discount" data-name="Товар 7" data-price="2700" data-category="home" data-tags="discount in-stock" data-order="7">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-7.svg" alt=""></div>
+          <span class="badge badge--discount product-card__badge">&minus;10%</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=7">Товар 7</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Для дома.</p>
+            <p class="product-card__price">Цена: <span class="visually-hidden">старая </span><s class="product-card__price-old">3000 руб.</s> <span class="visually-hidden">новая </span>2700 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=7">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--new" data-name="Товар 8" data-price="450" data-category="accessories" data-tags="new in-stock" data-order="8">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-8.svg" alt=""></div>
+          <span class="badge badge--new product-card__badge">Новинка</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=8">Товар 8</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Аксессуары.</p>
+            <p class="product-card__price">Цена: 450 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=8">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--featured" data-name="Товар 9" data-price="4900" data-category="home" data-tags="hit in-stock" data-order="9">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-9.svg" alt=""></div>
+          <span class="badge product-card__badge">Хит</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=9">Товар 9</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Для дома.</p>
+            <p class="product-card__price">Цена: 4900 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=9">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        </div>
+
+        <p class="catalog-empty" id="catalog-empty" hidden>Ничего не найдено. Измените фильтры или нажмите «Сбросить».</p>
       </section>
     </section>
   </main>

@@ -8,6 +8,7 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -15,10 +16,16 @@
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item">
-            <a class="site-nav__link site-nav__link--active" href="index.html">Главная</a>
+            <a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a>
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="category.html">Категория</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Карточка товара</a>
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link" href="contacts.html">Контакты</a>
@@ -37,7 +44,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <h1 class="hero__title">Учебный интернет-магазин</h1>
       <p class="hero__text">
@@ -64,6 +71,7 @@
 
       <div class="products-grid">
         <article class="product-card">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-1.svg" alt=""></div>
           <h3 class="product-card__title">Товар 1</h3>
           <p class="product-card__description">Краткое описание учебного товара.</p>
           <p class="product-card__price">Цена: 1000 руб.</p>
@@ -73,6 +81,7 @@
         </article>
 
         <article class="product-card">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-2.svg" alt=""></div>
           <h3 class="product-card__title">Товар 2</h3>
           <p class="product-card__description">Краткое описание учебного товара.</p>
           <p class="product-card__price">Цена: 1500 руб.</p>
@@ -82,6 +91,7 @@
         </article>
 
         <article class="product-card">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-3.svg" alt=""></div>
           <h3 class="product-card__title">Товар 3</h3>
           <p class="product-card__description">Краткое описание учебного товара.</p>
           <p class="product-card__price">Цена: 2000 руб.</p>
@@ -107,107 +117,84 @@
     <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
 
-  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-desc">
+    <div class="order-dialog__content">
+      <div class="order-dialog__header">
+        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+        <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно">&times;</button>
+      </div>
+      <p class="order-dialog__text" id="order-dialog-desc">
+        Вы выбрали: <strong id="order-dialog-product">—</strong>.
+        Поля, отмеченные <span aria-hidden="true">*</span><span class="visually-hidden">звёздочкой</span>, обязательны.
+      </p>
 
-    <form class="order-form" id="order-form" action="#" method="post" novalidate>
-      <input id="selected-product" name="selected-product" type="hidden">
+      <div class="error-summary" id="order-form-summary" role="group" aria-labelledby="order-summary-title" tabindex="-1" hidden>
+        <h3 class="error-summary__title" id="order-summary-title">Проверьте форму</h3>
+        <ul class="error-summary__list" id="order-summary-list"></ul>
+      </div>
+
+      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden">
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-name">Имя</label>
-        <input
-          class="order-form__input"
-          id="order-name"
-          name="name"
-          type="text"
-          placeholder="Введите ваше имя"
-          minlength="2"
-          autocomplete="given-name"
-          required
-        >
-      </div>
+          <label class="order-form__label" for="order-name">Имя <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" autocomplete="given-name" required aria-describedby="order-name-error">
+          <p class="order-form__error" id="order-name-error" hidden></p>
+        </div>
 
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-email">E-mail</label>
-        <input
-          class="order-form__input"
-          id="order-email"
-          name="email"
-          type="email"
-          placeholder="example@mail.ru"
-          autocomplete="email"
-          required
-        >
-      </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-email">E-mail <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required aria-describedby="order-email-error">
+          <p class="order-form__error" id="order-email-error" hidden></p>
+        </div>
 
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-phone">Телефон</label>
-        <input
-          class="order-form__input"
-          id="order-phone"
-          name="phone"
-          type="tel"
-          inputmode="tel"
-          placeholder="+7 (900) 000-00-00"
-          pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-          required
-        >
-        <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
-      </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-phone">Телефон <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required aria-describedby="order-phone-hint order-phone-error">
+          <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
+          <p class="order-form__error" id="order-phone-error" hidden></p>
+        </div>
 
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-date">Дата связи</label>
-        <input
-          class="order-form__input"
-          id="order-date"
-          name="date"
-          type="date"
-        >
-      </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-date">Дата связи</label>
+          <input class="order-form__input" id="order-date" name="date" type="date" aria-describedby="order-date-error">
+          <p class="order-form__error" id="order-date-error" hidden></p>
+        </div>
 
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-topic">Тема заявки</label>
-        <select class="order-form__select" id="order-topic" name="topic" required>
-          <option value="">Выберите тему</option>
-          <option value="product">Заказ товара</option>
-          <option value="consultation">Консультация</option>
-          <option value="delivery">Доставка</option>
-        </select>
-      </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки <span class="order-form__required" aria-hidden="true">*</span></label>
+          <select class="order-form__select" id="order-topic" name="topic" required aria-describedby="order-topic-error"><option value="">Выберите тему</option><option value="product">Заказ товара</option><option value="consultation">Консультация</option><option value="delivery">Доставка</option></select>
+          <p class="order-form__error" id="order-topic-error" hidden></p>
+        </div>
 
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-comment">Комментарий</label>
-        <textarea
-          class="order-form__textarea"
-          id="order-comment"
-          name="comment"
-          rows="4"
-          placeholder="Укажите дополнительную информацию"
-        ></textarea>
-      </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-comment">Комментарий</label>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию" aria-describedby="order-comment-error"></textarea>
+          <p class="order-form__error" id="order-comment-error" hidden></p>
+        </div>
 
-      <div class="order-form__field order-form__field--checkbox">
-        <label class="order-form__label">
-          <input
-            class="order-form__input"
-            id="order-agreement"
-            name="agreement"
-            type="checkbox"
-            required
-          >
-          Я согласен на обработку данных
-        </label>
-      </div>
+        <fieldset class="order-form__fieldset">
+          <legend class="order-form__legend">Как с вами связаться</legend>
+          <label class="order-form__option"><input class="order-form__input" type="radio" name="contact-method" value="phone" checked> По телефону</label>
+          <label class="order-form__option"><input class="order-form__input" type="radio" name="contact-method" value="email"> По e-mail</label>
+        </fieldset>
 
-      <div class="order-form__actions">
-        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
-        <button class="button button--primary" type="submit">Отправить заявку</button>
-      </div>
-    </form>
+        <div class="order-form__field order-form__field--checkbox">
+          <label class="order-form__label">
+            <input class="order-form__input" id="order-agreement" name="agreement" type="checkbox" required aria-describedby="order-agreement-error">
+            Я согласен на обработку данных <span class="order-form__required" aria-hidden="true">*</span>
+          </label>
+          <p class="order-form__error" id="order-agreement-error" hidden></p>
+        </div>
+
+        <div class="order-form__actions">
+          <button class="button button--secondary" type="button" id="close-order-dialog" data-close-dialog>Закрыть</button>
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+      </form>
+    </div>
   </dialog>
 
-  <p class="success-message" id="success-message" hidden>
-    Форма успешно отправлена!
-  </p>
+  <p class="success-message" id="success-message" role="status" aria-live="polite"></p>
 </body>
 </html>

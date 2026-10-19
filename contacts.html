@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -21,7 +22,13 @@
             <a class="site-nav__link" href="catalog.html">Каталог</a>
           </li>
           <li class="site-nav__item">
-            <a class="site-nav__link site-nav__link--active" href="contacts.html">Контакты</a>
+            <a class="site-nav__link" href="category.html">Категория</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Карточка товара</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a>
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
@@ -37,7 +44,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
       <span class="breadcrumbs__current">Контакты</span>
