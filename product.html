@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Подробная карточка товара: характеристики, сравнение, доставка.">
+  <title>Товар 2 — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="category.html">Категория</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="product.html" aria-current="page">Карточка товара</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span aria-hidden="true">/</span>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span aria-hidden="true">/</span>
+      <a class="breadcrumbs__link" id="crumb-category" href="category.html">Гаджеты</a>
+      <span class="breadcrumbs__current" id="crumb-current" aria-current="page">Товар 2</span>
+    </nav>
+
+    <article class="product-details" aria-labelledby="product-title">
+      <figure class="product-details__gallery">
+        <div class="product-details__image"><img class="product-details__img" id="product-image" src="images/product-2.svg" alt="Товар 2"></div>
+        <figcaption class="product-details__caption">Рисунок товара</figcaption>
+      </figure>
+
+      <div class="product-details__info">
+        <span class="badge" id="product-badge">Хит</span>
+        <h1 class="product-details__title" id="product-title">Товар 2</h1>
+        <p class="product-details__rating" id="product-rating">Рейтинг: 4,6 из 5 (28 отзывов)</p>
+        <p class="product-details__price" id="product-price">1500 руб.</p>
+        <p class="stock stock--in" id="product-stock">В наличии, отправим завтра</p>
+        <p id="product-short">Учебный товар категории «Гаджеты» с аккумулятором и беспроводным подключением.</p>
+
+        <ul class="product-details__features" id="product-features">
+          <li>Корпус из прочного пластика ABS;</li>
+          <li>до 12 часов работы без подзарядки;</li>
+          <li>гарантия 12 месяцев.</li>
+        </ul>
+
+        <div class="product-options" id="product-options">
+          <fieldset class="product-options__fieldset">
+            <legend class="product-options__legend">Цвет</legend>
+            <label class="product-options__option"><input type="radio" name="color" value="серый" checked> Серый</label>
+            <label class="product-options__option"><input type="radio" name="color" value="синий"> Синий</label>
+            <label class="product-options__option"><input type="radio" name="color" value="чёрный"> Чёрный</label>
+          </fieldset>
+          <div>
+            <label class="product-options__label" for="product-quantity">Количество</label>
+            <input class="product-options__input" id="product-quantity" name="quantity" type="number" min="1" max="10" value="1">
+          </div>
+        </div>
+
+        <div class="product-details__actions">
+          <button class="button button--primary" id="product-order-button" type="button" data-product="Товар 2" data-options="product-options">Заказать</button>
+          <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+        </div>
+      </div>
+    </article>
+
+    <nav class="anchor-nav" aria-label="Разделы карточки товара">
+      <a class="button button--secondary" href="#description">Описание</a>
+      <a class="button button--secondary" href="#specs">Характеристики</a>
+      <a class="button button--secondary" href="#compare">Сравнение</a>
+      <a class="button button--secondary" href="#delivery">Доставка</a>
+    </nav>
+
+    <section class="section" id="description" tabindex="-1">
+      <h2 class="section__title">Описание</h2>
+      <p id="product-long">Товар 2 рассчитан на ежедневное использование: он лёгкий, не требует настройки и подключается к телефону без проводов. Корпус защищён от брызг, а аккумулятор заряжается примерно за два часа.</p>
+    </section>
+
+    <section class="section" id="specs" tabindex="-1">
+      <h2 class="section__title">Характеристики</h2>
+      <div class="table-scroll" role="region" aria-label="Таблица характеристик" tabindex="0">
+        <table class="data-table" id="specs-table">
+          <caption>Характеристики товара 2</caption>
+          <tbody>
+            <tr class="data-table__group"><th scope="rowgroup" colspan="2">Основное</th></tr>
+            <tr><th scope="row">Артикул</th><td>GD-002</td></tr>
+            <tr><th scope="row">Категория</th><td>Гаджеты</td></tr>
+            <tr><th scope="row">Цвета</th><td>Серый, синий, чёрный</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="data-table__group"><th scope="rowgroup" colspan="2">Технические характеристики</th></tr>
+            <tr><th scope="row">Материал корпуса</th><td>Пластик ABS</td></tr>
+            <tr><th scope="row">Габариты</th><td>120 × 60 × 25 мм</td></tr>
+            <tr><th scope="row">Вес</th><td>180 г</td></tr>
+            <tr><th scope="row">Питание</th><td>Аккумулятор, 2000 мА·ч</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="data-table__group"><th scope="rowgroup" colspan="2">Гарантия и сервис</th></tr>
+            <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+            <tr><th scope="row">Страна производства</th><td>Россия</td></tr>
+            <tr><th scope="row">Возврат</th><td>В течение 14 дней</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="compare" tabindex="-1">
+      <h2 class="section__title">Сравнение с похожими товарами</h2>
+      <div class="table-scroll" role="region" aria-label="Таблица сравнения, прокручивается по горизонтали" tabindex="0">
+        <table class="data-table" id="compare-table">
+          <caption>Сравнение товаров категории «Гаджеты»</caption>
+          <thead>
+            <tr><td></td><th scope="col">Товар 1</th><th scope="col" class="data-table__cell--current">Товар 2 <span class="data-table__note">(этот товар)</span></th><th scope="col">Товар 6</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Цена</th><td>1000 руб.</td><td class="data-table__cell--current">1500 руб.</td><td>3200 руб.</td></tr>
+            <tr><th scope="row">Вес</th><td>150 г</td><td class="data-table__cell--current">180 г</td><td>240 г</td></tr>
+            <tr><th scope="row">Материал</th><td>Пластик</td><td class="data-table__cell--current">Пластик ABS</td><td>Алюминий</td></tr>
+            <tr><th scope="row">Гарантия</th><td>6 месяцев</td><td class="data-table__cell--current">12 месяцев</td><td>24 месяца</td></tr>
+            <tr><th scope="row">Беспроводное подключение</th><td>Нет</td><td class="data-table__cell--current">Да</td><td>Да</td></tr>
+            <tr><th scope="row">Наличие</th><td>В наличии</td><td class="data-table__cell--current">В наличии</td><td>Нет в наличии</td></tr>
+            <tr><th scope="row">Рейтинг</th><td>4,2 из 5</td><td class="data-table__cell--current">4,6 из 5</td><td>4,8 из 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="delivery" tabindex="-1">
+      <h2 class="section__title">Доставка и оплата</h2>
+      <dl class="info-list">
+        <dt>Самовывоз</dt><dd>Бесплатно, заказ готов через 1 день.</dd>
+        <dt>Курьер</dt><dd>300 руб., доставка за 1–3 дня.</dd>
+        <dt>Оплата</dt><dd>Картой онлайн или при получении.</dd>
+        <dt>Возврат</dt><dd>В течение 14 дней без объяснения причин.</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-desc">
+    <div class="order-dialog__content">
+      <div class="order-dialog__header">
+        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+        <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно">&times;</button>
+      </div>
+      <p class="order-dialog__text" id="order-dialog-desc">
+        Вы выбрали: <strong id="order-dialog-product">—</strong>.
+        Поля, отмеченные <span aria-hidden="true">*</span><span class="visually-hidden">звёздочкой</span>, обязательны.
+      </p>
+
+      <div class="error-summary" id="order-form-summary" role="group" aria-labelledby="order-summary-title" tabindex="-1" hidden>
+        <h3 class="error-summary__title" id="order-summary-title">Проверьте форму</h3>
+        <ul class="error-summary__list" id="order-summary-list"></ul>
+      </div>
+
+      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden">
+
+      <div class="order-form__field">
+          <label class="order-form__label" for="order-name">Имя <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" autocomplete="given-name" required aria-describedby="order-name-error">
+          <p class="order-form__error" id="order-name-error" hidden></p>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-email">E-mail <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required aria-describedby="order-email-error">
+          <p class="order-form__error" id="order-email-error" hidden></p>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-phone">Телефон <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required aria-describedby="order-phone-hint order-phone-error">
+          <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
+          <p class="order-form__error" id="order-phone-error" hidden></p>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-date">Дата связи</label>
+          <input class="order-form__input" id="order-date" name="date" type="date" aria-describedby="order-date-error">
+          <p class="order-form__error" id="order-date-error" hidden></p>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки <span class="order-form__required" aria-hidden="true">*</span></label>
+          <select class="order-form__select" id="order-topic" name="topic" required aria-describedby="order-topic-error"><option value="">Выберите тему</option><option value="product">Заказ товара</option><option value="consultation">Консультация</option><option value="delivery">Доставка</option></select>
+          <p class="order-form__error" id="order-topic-error" hidden></p>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-comment">Комментарий</label>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию" aria-describedby="order-comment-error"></textarea>
+          <p class="order-form__error" id="order-comment-error" hidden></p>
+        </div>
+
+        <fieldset class="order-form__fieldset">
+          <legend class="order-form__legend">Как с вами связаться</legend>
+          <label class="order-form__option"><input class="order-form__input" type="radio" name="contact-method" value="phone" checked> По телефону</label>
+          <label class="order-form__option"><input class="order-form__input" type="radio" name="contact-method" value="email"> По e-mail</label>
+        </fieldset>
+
+        <div class="order-form__field order-form__field--checkbox">
+          <label class="order-form__label">
+            <input class="order-form__input" id="order-agreement" name="agreement" type="checkbox" required aria-describedby="order-agreement-error">
+            Я согласен на обработку данных <span class="order-form__required" aria-hidden="true">*</span>
+          </label>
+          <p class="order-form__error" id="order-agreement-error" hidden></p>
+        </div>
+
+        <div class="order-form__actions">
+          <button class="button button--secondary" type="button" id="close-order-dialog" data-close-dialog>Закрыть</button>
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <p class="success-message" id="success-message" role="status" aria-live="polite"></p>
+</body>
+</html>

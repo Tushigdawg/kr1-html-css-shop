@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Товары категории «Гаджеты».">
+  <title>Категория «Гаджеты» — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="category.html" aria-current="page">Категория</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Карточка товара</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span aria-hidden="true">/</span>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__current" aria-current="page">Гаджеты</span>
+    </nav>
+
+    <header class="category-header">
+      <h1 class="category-header__title">Гаджеты</h1>
+      <p class="category-header__text">Небольшие электронные устройства для учёбы и повседневных дел. Здесь собраны все товары этой категории.</p>
+    </header>
+
+    <section class="section" aria-labelledby="category-products-title">
+      <h2 class="section__title" id="category-products-title">Товары категории</h2>
+
+      <div class="catalog-toolbar">
+        <p class="catalog-toolbar__count" id="results-count" role="status">Найдено: 3 товара</p>
+        <div class="catalog-toolbar__sort">
+            <label for="sort-select">Сортировка:</label>
+            <select class="catalog-toolbar__select" id="sort-select">
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Сначала дешёвые</option>
+              <option value="price-desc">Сначала дорогие</option>
+              <option value="name">По названию</option>
+            </select>
+          </div>
+      </div>
+
+      <div class="products-grid products-grid--list" data-sortable>
+        <article class="product-card product-card--horizontal" data-name="Товар 1" data-price="1000" data-category="gadgets" data-tags="in-stock" data-order="1">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-1.svg" alt=""></div>
+          
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=1">Товар 1</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Гаджеты.</p>
+            <p class="product-card__price">Цена: 1000 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=1">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--featured product-card--horizontal" data-name="Товар 2" data-price="1500" data-category="gadgets" data-tags="hit in-stock" data-order="2">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-2.svg" alt=""></div>
+          <span class="badge product-card__badge">Хит</span>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=2">Товар 2</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Гаджеты.</p>
+            <p class="product-card__price">Цена: 1500 руб.</p>
+            <p class="stock stock--in">В наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=2">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          </div>
+        </article>
+        <article class="product-card product-card--unavailable product-card--horizontal" data-name="Товар 6" data-price="3200" data-category="gadgets" data-tags="out" data-order="6">
+          <div class="product-card__media" aria-hidden="true"><img class="product-card__image" src="images/product-6.svg" alt=""></div>
+          
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a class="product-card__link" href="product.html?id=6">Товар 6</a></h3>
+            <p class="product-card__description">Краткое описание учебного товара. Категория: Гаджеты.</p>
+            <p class="product-card__price">Цена: 3200 руб.</p>
+            <p class="stock stock--out">Нет в наличии</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary" href="product.html?id=6">Подробнее</a>
+            <button class="button button--ghost" type="button" data-favorite aria-pressed="false">В избранное</button>
+          <button class="button button--primary" type="button" disabled>Заказать</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="other-categories-title">
+      <h2 class="section__title" id="other-categories-title">Другие категории</h2>
+      <div class="category-grid">
+        <a class="category-card" href="catalog.html?category=accessories">
+          <h3 class="category-card__title">Аксессуары</h3>
+          <p class="category-card__text">3 товара</p>
+        </a>
+        <a class="category-card" href="catalog.html?category=home">
+          <h3 class="category-card__title">Для дома</h3>
+          <p class="category-card__text">3 товара</p>
+        </a>
+        <a class="category-card" href="catalog.html">
+          <h3 class="category-card__title">Весь каталог</h3>
+          <p class="category-card__text">9 товаров</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+</body>
+</html>
